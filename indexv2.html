@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partner PULSE V2 Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <style>
+      body {
+        background-color: #f0f2f5;
+      }
+      /* Custom scrollbar */
+      .app-shell::-webkit-scrollbar {
+        width: 4px;
+      }
+      .app-shell::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body class="flex justify-center items-center min-h-screen p-4">
+    <div
+      class="w-full max-w-sm bg-gray-100 rounded-2xl shadow-2xl overflow-hidden border-4 border-gray-800"
+    >
+      <div class="flex flex-col h-[768px]">
+        <header class="bg-white p-4 shadow-md z-10">
+          <div class="flex justify-between items-center">
+            <div>
+              <h1 class="text-xl font-bold text-blue-800">Partner PULSE</h1>
+              <p class="text-xs text-gray-500" id="header-date">
+                Wednesday, May 22, 2024
+              </p>
+            </div>
+            <div class="text-xs">
+              <a href="#" class="font-medium text-blue-700">English</a> |
+              <a href="#" class="text-gray-600"> हिंदी</a>
+            </div>
+          </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto p-4 app-shell">
+          <div id="page-home">
+            <div
+              class="bg-white rounded-lg shadow p-4 mb-4 flex items-center space-x-3"
+            >
+              <img
+                src="https://via.placeholder.com/60/0033A0/FFFFFF?text=CEO"
+                alt="CEO"
+                class="rounded-full w-16 h-16 object-cover"
+              />
+              <div>
+                <h2 class="font-semibold text-gray-800">THE CORNER OFFICE</h2>
+                <p class="text-sm text-gray-600">
+                  A message from our CEO. Watch his 60-second vision!
+                </p>
+              </div>
+              <ion-icon
+                name="play-circle"
+                class="text-3xl text-green-500"
+              ></ion-icon>
+            </div>
+
+            <div
+              class="bg-white rounded-lg shadow p-4 mb-4 flex items-center space-x-3"
+            >
+              <img
+                src="https://via.placeholder.com/40/7C3AED/FFFFFF?text=E"
+                alt="Editor"
+                class="rounded-full w-10 h-10 object-cover"
+              />
+              <div>
+                <h2 class="font-semibold text-gray-800">EDITOR'S WELCOME</h2>
+                <p class="text-sm text-gray-600">
+                  This month it's all about YOU and our new SME focus.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-blue-50 rounded-lg shadow p-4 mb-4 border border-blue-200"
+            >
+              <h2 class="font-bold text-blue-800">
+                🔥 HOT TOPIC: All About IDV
+              </h2>
+              <ul
+                class="list-decimal list-inside text-sm text-gray-600 space-y-1 mt-2"
+              >
+                <li>Market Value of Your Vehicle</li>
+                <li>Max Claim Payout</li>
+              </ul>
+              <button
+                class="mt-4 w-full bg-blue-700 text-white text-sm font-medium py-2 rounded-lg hover:bg-blue-800"
+              >
+                READ FULL BLOG POST
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-white rounded-lg shadow p-3 text-center">
+                <ion-icon
+                  name="storefront-outline"
+                  class="text-3xl text-blue-700 mx-auto"
+                ></ion-icon>
+                <h2 class="font-semibold text-gray-800 text-sm mt-1">
+                  INCLUSION SPOTLIGHT
+                </h2>
+                <p class="text-xs text-gray-600 mt-1">
+                  "Shopkeeper's Edge" deep-dive!
+                </p>
+              </div>
+
+              <div
+                id="poll-module"
+                class="bg-yellow-100 border border-yellow-300 rounded-lg shadow p-3"
+              >
+                <h2 class="font-semibold text-gray-800 text-sm text-center">
+                  QUICK POLL
+                </h2>
+                <p class="text-xs text-gray-600 text-center mb-2">
+                  Biggest challenge?
+                </p>
+                <div class="space-y-2">
+                  <button
+                    onclick="vote('A')"
+                    class="w-full text-xs bg-white border border-gray-300 rounded-md py-1 px-2 text-left"
+                  >
+                    A) New Leads
+                  </button>
+                  <button
+                    onclick="vote('B')"
+                    class="w-full text-xs bg-white border border-gray-300 rounded-md py-1 px-2 text-left"
+                  >
+                    B) Client Objections
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="page-articles" class="hidden">
+            <div class="mb-4">
+              <input
+                type="search"
+                placeholder="Search articles (e.g., 'Health')"
+                class="w-full p-2 border border-gray-300 rounded-lg text-sm"
+              />
+            </div>
+
+            <div class="flex space-x-2 mb-4">
+              <button
+                class="flex-1 bg-blue-700 text-white text-xs font-medium py-2 rounded-lg"
+              >
+                All
+              </button>
+              <button
+                class="flex-1 bg-white border border-gray-300 text-gray-700 text-xs font-medium py-2 rounded-lg"
+              >
+                Product
+              </button>
+              <button
+                class="flex-1 bg-white border border-gray-300 text-gray-700 text-xs font-medium py-2 rounded-lg"
+              >
+                SME
+              </button>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bg-white rounded-lg shadow p-3 flex space-x-3">
+                <img
+                  src="https://via.placeholder.com/100x70?text=Health"
+                  alt="Article"
+                  class="w-24 h-auto object-cover rounded-md"
+                />
+                <div>
+                  <span class="text-xs font-semibold text-purple-600"
+                    >HEALTH</span
+                  >
+                  <h3 class="font-semibold text-gray-800">
+                    Mastering Health Top-Ups
+                  </h3>
+                  <p class="text-xs text-gray-500">
+                    3 key questions to ask every client.
+                  </p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg shadow p-3 flex space-x-3">
+                <img
+                  src="https://via.placeholder.com/100x70?text=Motor"
+                  alt="Article"
+                  class="w-24 h-auto object-cover rounded-md"
+                />
+                <div>
+                  <span class="text-xs font-semibold text-red-600">MOTOR</span>
+                  <h3 class="font-semibold text-gray-800">All About IDV</h3>
+                  <p class="text-xs text-gray-500">
+                    How to explain Insured Declared Value.
+                  </p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg shadow p-3 flex space-x-3">
+                <img
+                  src="https://via.placeholder.com/100x70?text=SME"
+                  alt="Article"
+                  class="w-24 h-auto object-cover rounded-md"
+                />
+                <div>
+                  <span class="text-xs font-semibold text-green-600">SME</span>
+                  <h3 class="font-semibold text-gray-800">
+                    The Shopkeeper's Edge
+                  </h3>
+                  <p class="text-xs text-gray-500">
+                    Why this policy is a game-changer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="page-profile" class="hidden">
+            <div class="text-center mb-6">
+              <img
+                src="https://via.placeholder.com/100/3B82F6/FFFFFF?text=P"
+                alt="Agent Priya"
+                class="w-24 h-24 rounded-full mx-auto mb-2 border-4 border-white shadow-lg"
+              />
+              <h2 class="text-xl font-bold text-gray-800">Agent Priya</h2>
+              <p class="text-sm text-gray-500">Agent ID: 12345</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 text-center mb-6">
+              <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-blue-700">1,250</div>
+                <div class="text-xs text-gray-500">Total Points</div>
+              </div>
+              <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-blue-700">5</div>
+                <div class="text-xs text-gray-500">Your Level</div>
+              </div>
+              <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-blue-700">#42</div>
+                <div class="text-xs text-gray-500">Region Rank</div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                My Badges
+              </h3>
+              <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="bg-white rounded-lg shadow p-3">
+                  <ion-icon
+                    name="star"
+                    class="text-4xl text-yellow-400"
+                  ></ion-icon>
+                  <p class="text-xs font-medium mt-1">SME Star</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-3">
+                  <ion-icon
+                    name="rocket"
+                    class="text-4xl text-red-500"
+                  ></ion-icon>
+                  <p class="text-xs font-medium mt-1">Quick Start</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-3">
+                  <ion-icon
+                    name="school"
+                    class="text-4xl text-blue-500"
+                  ></ion-icon>
+                  <p class="text-xs font-medium mt-1">Product Pro</p>
+                </div>
+                <div class="bg-gray-200 rounded-lg p-3 opacity-60">
+                  <ion-icon
+                    name="trophy"
+                    class="text-4xl text-gray-500"
+                  ></ion-icon>
+                  <p class="text-xs font-medium mt-1">Top Seller</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="bg-white p-3 shadow-lg z-10">
+          <button
+            class="w-full bg-green-500 text-white font-bold py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-green-600 mb-3"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span>SHARE ON WHATSAPP</span>
+          </button>
+          <div class="flex justify-around items-center text-gray-500">
+            <a
+              href="#"
+              onclick="showPage('home')"
+              class="nav-link text-center text-blue-700 font-medium"
+            >
+              <ion-icon name="home" class="text-2xl mx-auto"></ion-icon>
+              <span class="text-xs">Home</span>
+            </a>
+            <a
+              href="#"
+              onclick="showPage('articles')"
+              class="nav-link text-center"
+            >
+              <ion-icon
+                name="document-text"
+                class="text-2xl mx-auto"
+              ></ion-icon>
+              <span class="text-xs">Articles</span>
+            </a>
+            <a
+              href="#"
+              onclick="showPage('profile')"
+              class="nav-link text-center"
+            >
+              <ion-icon
+                name="person-circle"
+                class="text-2xl mx-auto"
+              ></ion-icon>
+              <span class="text-xs">Profile</span>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // --- Poll Function (from V1) ---
+      function vote(option) {
+        const pollModule = document.getElementById("poll-module");
+        pollModule.innerHTML = `
+                <div class="text-center p-4">
+                    <p class="font-semibold text-gray-800">Thanks for voting!</p>
+                    <p class="text-xs text-gray-600">You voted for: ${option}</p>
+                </div>
+            `;
+      }
+
+      // --- V2 Page Navigation Function ---
+      function showPage(pageName) {
+        // 1. Hide all pages
+        document.getElementById("page-home").classList.add("hidden");
+        document.getElementById("page-articles").classList.add("hidden");
+        document.getElementById("page-profile").classList.add("hidden");
+
+        // 2. Deactivate all nav links
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+          link.classList.remove("text-blue-700", "font-medium");
+          link.classList.add("text-gray-500");
+        });
+
+        // 3. Show the target page
+        const targetPage = document.getElementById(`page-${pageName}`);
+        targetPage.classList.remove("hidden");
+
+        // 4. Activate the target nav link
+        const targetLink = document.querySelector(
+          `a[onclick="showPage('${pageName}')"]`
+        );
+        targetLink.classList.add("text-blue-700", "font-medium");
+        targetLink.classList.remove("text-gray-500");
+
+        // Prevent link from jumping
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>
